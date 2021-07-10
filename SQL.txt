@@ -1,0 +1,164 @@
+ use dsbs;
+create table employee(slno int(5) ,emp_name varchar(50) ,employee_id int(5)primary key ,job_id int(5),Qulification varchar(50),department_id varchar(50));
+insert into employee values(1'harish',1001,51,'MBA','MARKETING');
+insert into employee values(2,'jaya',1002,52,'MCom','Finance');
+insert into employee values(3,'rama',1004,62,'MBA','Production');
+insert into employee values(6,'scott',1009,51,'BE','Production');
+insert into employee values(4,'sham',1008,60,'MCA','IT');
+insert into employee values(5,'Ramya',1007,60,'BE','IT'); 
+insert into employee values(7,'harsha',1010,51,'BE','Marketing');
+insert into employee values(8,'ananya',1011,63,'','Fecility');
+insert into employee values(9,'sandhya',1012,60,Msc,'It');
+select * from employee;
++------+----------+-------------+--------+--------------+---------------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id |
++------+----------+-------------+--------+--------------+---------------+
+|    1 | harish   |        1001 |     51 | MBA          | MARKETING     |
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       |
+|    3 | rama     |        1004 |     62 | MBA          | Production    |
+|    5 | Ramya    |        1007 |     60 | BE           | IT            |
+|    4 | sham     |        1008 |     60 | MCA          | IT            |
+|    6 | scott    |        1009 |     51 | BE           | Production    |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     |
+|    8 | ananya   |        1011 |     63 |              | Fecility      |
+|    9 | sandhya  |        1012 |     60 | Msc          | It            |
++------+----------+-------------+--------+--------------+---------------+
+alter table employee add column salary;
+select * from employee;
++------+----------+-------------+--------+--------------+---------------+--------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary |
++------+----------+-------------+--------+--------------+---------------+--------+
+|    1 | harish   |        1001 |     51 | MBA          | MARKETING     | 50000  |
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | NULL   |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | NULL   |
+|    5 | Ramya    |        1007 |     60 | BE           | IT            | NULL   |
+|    4 | sham     |        1008 |     60 | MCA          | IT            | NULL   |
+|    6 | scott    |        1009 |     51 | BE           | Production    | NULL   |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     | NULL   |
+|    8 | ananya   |        1011 |     63 |              | Fecility      | NULL   |
+|    9 | sandhya  |        1012 |     60 | Msc          | It            | NULL   |
++------+----------+-------------+--------+--------------+---------------+--------+
+update employee set salary=50000 where slno in(1);
+ update employee set salary=35000 where slno in(2);
+update employee set salary=35000 where slno in(3);
+ update employee set salary=20000 where slno in(4);
+update employee set salary=20000 where slno in(5);
+update employee set salary=30000 where slno in(6);
+update employee set salary=35000 where slno in(7);
+update employee set salary=10000 where slno in(8);
+update employee set salary=20000 where slno in(9);
+select * from employee;
++------+----------+-------------+--------+--------------+---------------+--------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary |
++------+----------+-------------+--------+--------------+---------------+--------+
+|    1 | harish   |        1001 |     51 | MBA          | MARKETING     | 50000  |
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | 35000  |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | 35000  |
+|    5 | Ramya    |        1007 |     60 | BE           | IT            | 20000  |
+|    4 | sham     |        1008 |     60 | MCA          | IT            | 20000  |
+|    6 | scott    |        1009 |     51 | BE           | Production    | 30000  |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     | 35000  |
+|    8 | ananya   |        1011 |     63 |              | Fecility      | 10000  |
+|    9 | sandhya  |        1012 |     60 | Msc          | It            | 20000  |
++------+----------+-------------+--------+--------------+---------------+--------+
+update employee set salary=35000.20000 where slno in(7);
+
+select sum(salary) from employee;
++-------------+
+| sum(salary) |
++-------------+
+|    255000.2 |
++-------------+
+
+select min(salary) from employee;
++-------------+
+| min(salary) |
++-------------+
+| 10000       |
++-------------+
+
+select max(salary) from employee;
++-------------+
+| max(salary) |
++-------------+
+| 50000       |
++-------------+
+
+
+ select avg(salary) from employee;
++-----------------+
+| avg(salary)     |
++-----------------+
+| 28333.355555556 |
++-----------------+
+
+
+select * from employee  where salary>20000;
++------+----------+-------------+--------+--------------+---------------+-------------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary      |
++------+----------+-------------+--------+--------------+---------------+-------------+
+|    1 | harish   |        1001 |     51 | MBA          | MARKETING     | 50000       |
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | 35000       |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | 35000       |
+|    6 | scott    |        1009 |     51 | BE           | Production    | 30000       |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     | 35000.20000 |
++------+----------+-------------+--------+--------------+---------------+-------------+
+
+
+ select * from employee  where salary=35000;
++------+----------+-------------+--------+--------------+---------------+--------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary |
++------+----------+-------------+--------+--------------+---------------+--------+
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | 35000  |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | 35000  |
++------+----------+-------------+--------+--------------+---------------+--------+
+
+
+select * from employee where emp_name like '%a';
++------+----------+-------------+--------+--------------+---------------+-------------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary      |
++------+----------+-------------+--------+--------------+---------------+-------------+
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | 35000       |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | 35000       |
+|    5 | Ramya    |        1007 |     60 | BE           | IT            | 20000       |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     | 35000.20000 |
+|    8 | ananya   |        1011 |     63 |              | Fecility      | 10000       |
+|    9 | sandhya  |        1012 |     60 | Msc          | It            | 20000       |
++------+----------+-------------+--------+--------------+---------------+-------------+
+
+
+select * from employee where emp_name like '%a%';
++------+----------+-------------+--------+--------------+---------------+-------------+
+| slno | emp_name | employee_id | job_id | Qulification | department_id | salary      |
++------+----------+-------------+--------+--------------+---------------+-------------+
+|    1 | harish   |        1001 |     51 | MBA          | MARKETING     | 50000       |
+|    2 | jaya     |        1002 |     52 | MCom         | Finance       | 35000       |
+|    3 | rama     |        1004 |     62 | MBA          | Production    | 35000       |
+|    5 | Ramya    |        1007 |     60 | BE           | IT            | 20000       |
+|    4 | sham     |        1008 |     60 | MCA          | IT            | 20000       |
+|    7 | harsha   |        1010 |     51 | BE           | Marketing     | 35000.20000 |
+|    8 | ananya   |        1011 |     63 |              | Fecility      | 10000       |
+|    9 | sandhya  |        1012 |     60 | Msc          | It            | 20000       |
++------+----------+-------------+--------+--------------+---------------+-------------+
+
+
+  SELECT MAX(SALARY) FROM EMPLOYEE;
++-------------+
+| MAX(SALARY) |
++-------------+
+| 50000       |
++-------------+
+higest.lowest salaries of total number of employee===
+SELECT MAX(SALARY) FROM EMPLOYEE WHERE SALARY<(SELECT MAX(SALARY) FROM EMPLOYEE);
++-------------+
+| MAX(SALARY) |
++-------------+
+| 35000.20000 |
++-------------+
+
+SELECT MIN(SALARY) FROM EMPLOYEE WHERE SALARY<(SELECT MIN(SALARY) FROM EMPLOYEE);
++-------------+
+| MIN(SALARY) |
++-------------+
+| 10000       |
++-------------+
